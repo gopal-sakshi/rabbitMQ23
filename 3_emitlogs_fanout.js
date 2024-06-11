@@ -1,19 +1,16 @@
 #!/usr/bin/env node
 var amqp = require('amqplib/callback_api');
 
-amqp.connect('amqp://rabbitmq:1258@localhost:49007', function (error0, connection) {
-    if (error0) { throw error0; }
+amqp.connect('amqp://rabbitmq:1258@localhost:5672', function (error0, connection) {
+    if (error0) { console.log("error @ connection ===> ", error0); }
     connection.createChannel(function (error1, channel) {
-        if (error1) { throw error1; }
-        var exchange = 'logs';
-        var msg = process.argv.slice(2).join(' ') || 'Hello World!';
+        if (error1) { console.log("error @ channel ===> ", error1); }
+        var exchange = 'logs23';
         channel.assertExchange(exchange, 'fanout', { durable: false });
-        channel.publish(exchange, '', Buffer.from(msg));
-        console.log(" [x] Sent %s", msg);
+        setInterval(() => {
+            var msg = 'realmadrid23__' + ' ' + `${new Date().toISOString()}`;
+            console.log("Sent Msg23 ===> ", msg);
+            channel.publish(exchange, '', Buffer.from(msg));
+        }, 3000);
     });
-
-    setTimeout(function () {
-        connection.close();
-        process.exit(0);
-    }, 500);
 });
