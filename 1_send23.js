@@ -2,9 +2,9 @@
 
 var amqp = require('amqplib/callback_api');
 
-// amqp://rabbitmq:1258@localhost:49007                 // WIth password
-// amqp://localhost:49007                               // Without password
-amqp.connect('amqp://rabbitmq:1258@localhost:49007', function(error0, connection) {
+// amqp://rabbitmq:1258@localhost:5672                 // WIth password
+// amqp://localhost:5672                               // Without password
+amqp.connect('amqp://rabbitmq:1258@localhost:5672', function(error0, connection) {
     if (error0) { throw error0; }
     connection.createChannel(function(error1, channel) {
         if (error1) { throw error1; }

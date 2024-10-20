@@ -1,6 +1,6 @@
 var amqp = require('amqplib/callback_api');
 
-amqp.connect('amqp://rabbitmq:1258@localhost:49007', function (error, connection) {
+amqp.connect('amqp://rabbitmq:1258@localhost:5672', function (error, connection) {
     connection.createChannel(function (error, channel) {
         var queue = 'task_queue';
         channel.assertQueue(queue, { durable: true });
