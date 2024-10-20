@@ -1,8 +1,4 @@
 {
-  "dependencies": {
-    "amqplib": "^0.10.3",
-    "sharp": "0.32.6"
-  }
     "dependencies": {
         "amqplib": "^0.10.3",
         "body-parser": "^1.20.3",
